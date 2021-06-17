@@ -1,3 +1,6 @@
+# 0.1.1
+- Modified `validate.sh` to fix `environment-sdk` regex.
+
 # 0.1.0
 - Added GitHub actions
   - `test`
