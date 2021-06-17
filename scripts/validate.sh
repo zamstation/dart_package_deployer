@@ -68,7 +68,7 @@ patterns=(
 	["homepage"]="^homepage: https://zamstation.com$"
 	["repository"]="^repository: https://github.com/zamstation/$packageName$"
 	["environment"]="^environment:$"
-	["environment-sdk"]="^  sdk: \">=2.12.0 <3.0.0\"$"
+	["environment-sdk"]="^  sdk: .+$"
 )
 
 for field in "${!patterns[@]}"; do
