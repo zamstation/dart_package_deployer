@@ -1,5 +1,5 @@
 name: dart_package_deployer
-version: 0.0.1
+version: 0.1.0
 description: Deployment utilities for all zamstation dart packages.
 homepage: https://zamstation.com
 repository: https://github.com/zamstation/dart_package_deployer

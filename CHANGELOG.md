@@ -1,3 +1,13 @@
+# 0.1.0
+- Added GitHub actions
+  - `test`
+  - `build`
+  - `dry_deploy`
+  - `deploy`
+- Removed `main.sh`
+- Moved `scripts` directory to `root`
+- Added production publish command to `deploy.sh`
+
 # 0.0.1
 
 - Includes `main.sh` which is the entry point.
