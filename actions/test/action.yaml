@@ -1,0 +1,23 @@
+name: "Test"
+description: "Tests Dart Package"
+inputs:
+  path:
+    description: "Code directory path"
+    required: false
+    default: workspace/code
+
+runs:
+  using: "composite"
+  steps:
+    - name: Compile
+      shell: bash
+      run: bash "${{ github.action_path }}/../../scripts/compile.sh" ${{ inputs.path }}
+    - name: Lint
+      shell: bash
+      run: bash "${{ github.action_path }}/../../scripts/lint.sh" ${{ inputs.path }}
+    - name: Analyze
+      shell: bash
+      run: bash "${{ github.action_path }}/../../scripts/analyze.sh" ${{ inputs.path }}
+    - name: Test
+      shell: bash
+      run: bash "${{ github.action_path }}/../../scripts/test.sh" ${{ inputs.path }}

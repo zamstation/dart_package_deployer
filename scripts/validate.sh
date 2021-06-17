@@ -15,7 +15,9 @@
 #
 #-----------------------------------------------------------------------------
 
+#
 # Setup
+#
 scriptDirectory="$(dirname "$0")"
 scriptName="$(basename "$0")"
 errorList=(
@@ -26,11 +28,19 @@ errorList=(
 source "$scriptDirectory/logger.sh" $scriptName
 source "$scriptDirectory/error_thrower.sh" $scriptName $errorList
 
-# Initialize
+#
+# Parse Arguments
+#
 buildDirectory="."
 if [[ ! -z "$1" ]]; then
 	buildDirectory="$1"
 fi
+
+#
+# Initialize
+#
+logStep "Initializing"
+logCd "$buildDirectory"
 cd "$buildDirectory"
 
 #
@@ -45,7 +55,6 @@ fi
 packageName=$(grep "name:" "pubspec.yaml" | cut -d ":" -f2 | xargs)
 logMeta "Package Name" "$packageName"
 
-
 #
 # Validating pubspec
 #
@@ -54,7 +63,7 @@ logStep "Validating pubspec"
 declare -A patterns
 patterns=(
 	["name"]="^name: $packageName$"
-	["version"]="^version: [0-9]+[.][0-9]+[.][0-9]+$"
+	["version"]="^version: \d+\.\d+\.\d+(?:[+-]\S+)?$"
 	["description"]="^description: .{60,}$"
 	["homepage"]="^homepage: https://zamstation.com$"
 	["repository"]="^repository: https://github.com/zamstation/$packageName$"
@@ -63,7 +72,7 @@ patterns=(
 )
 
 for field in "${!patterns[@]}"; do
-	matches=$(grep -cE "${patterns[$field]}" "pubspec.yaml")
+	matches=$(grep -cP "${patterns[$field]}" "pubspec.yaml")
 	if [ $matches -eq 1 ]; then
 		logCheck "$field"
 	else
@@ -99,15 +108,20 @@ testFiles=(test/*_test.dart)
 if [[ -f ${testFiles[0]} ]]; then
 	logCheck "test/*_test.dart"
 else
-  logUnCheck "test/*_test.dart"
-  throwAndExit "FILE_NOT_FOUND_ERROR" "No test files found."
+	logUnCheck "test/*_test.dart"
+	throwAndExit "FILE_NOT_FOUND_ERROR" "No test files found."
 fi
 
+#
+# Cleanup
+#
+logStep "Cleaning Up"
+logCd -
+cd -
 
 #
 # Shutdown
 #
-cd -
 exit 0
 
 #-----------------------------------------------------------------------------

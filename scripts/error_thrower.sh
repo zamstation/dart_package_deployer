@@ -18,7 +18,7 @@
 # Setup
 #
 scriptDirectory="$(dirname "$0")"
-source "$scriptDirectory/logger.sh" "$1" false
+source "$scriptDirectory/logger.sh" "$1" true
 
 #
 # Initialize

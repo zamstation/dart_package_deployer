@@ -15,7 +15,6 @@ set -e
 scriptDirectory="$(dirname "$0")"
 scriptName="$(basename "$0")"
 errorList=("DART_FORMAT_ERROR")
-utilitiesDirectory="$scriptDirectory/../utilities"
 source "$scriptDirectory/logger.sh" $scriptName
 source "$scriptDirectory/error_thrower.sh" $scriptName $errorList
 
@@ -30,8 +29,8 @@ cd "$buildDirectory"
 # Linting Code
 #
 logStep "Linting Code"
-echo "Running dart format ."
-dart format .
+echo "Running dart format --fix --set-exit-if-changed ."
+dart format --fix --set-exit-if-changed .
 exitCode=$?
 if [[ exitCode -ne 0 ]]; then
 	throwAndExit "DART_FORMAT_ERROR" "Error while running dart format"

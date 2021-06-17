@@ -28,12 +28,26 @@ noInit=$2
 stepCounter=1
 RESET_STYLE="\033[0m"
 ERROR_STYLE="\033[0;31m"
-STEP_STYLE="\033[1;34m"
+TITLE_STYLE="\033[1;34m"
+STEP_STYLE="\033[0;34m"
+HIGHLIGHT_STYLE="\033[0;33m"
 BRIGHT_STYLE="\033[1;97m"
 CHECK_STYLE="\033[0;32m"
 UNCHECK_STYLE="\033[0;31m"
 
 #-----------------------------------------------------------------------------
+
+#
+# Function logInit
+#
+logInit() {
+	scriptName=$(echo $1 | tr '[:lower:]' '[:upper:]')
+	echo -e "\n${TITLE_STYLE}$scriptName${RESET_STYLE}"
+}
+
+if [[ ! $noInit ]]; then
+	logInit "$1"
+fi
 
 #
 # Function logMeta
@@ -49,6 +63,13 @@ logStep() {
 	stepTitle=$1
 	echo -e "\n${STEP_STYLE}$stepTitle ...${RESET_STYLE}"
 	((stepCounter++))
+}
+
+#
+# Function logCd
+#
+logCd() {
+	echo -e "Entering: ${HIGHLIGHT_STYLE}$1${RESET_STYLE}"
 }
 
 #

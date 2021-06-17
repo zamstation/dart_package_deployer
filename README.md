@@ -1,26 +1,14 @@
 # Dart Package Deployer
 
-This is a centralized repository that contain scripts for deploying dart packages. Clone this repository and run `main.sh` to create a workspace for deployment.
+This is a centralized repository that contain scripts for deploying dart packages. Use the GitHub actions to integrate the deployment tools in your ci-cd pipleine.
 
-Other scripts are present in `workspace/deploy/scripts` directory.
+## GitHub Actions
+- `test` - calls test phase scripts
+- `build` - calls build phase scripts
+- `dry_deploy` - calls deploy phase scrips with `test` arg
+- `deploy` - calls deploy phase scripts with `prod` arg
 
-## Workspace Structure
-- workspace
-  - code
-  - build
-  - deploy
-    - scripts
-      - `compile.sh`
-      - `lint.sh`
-      - `analyze.sh`
-      - `test.sh`
-      - `pack.sh`
-      - `validate.sh`
-      - `publish.sh`
-      - `error_thrower.sh` - utility script
-      - `logger.sh` - utility script
-
-## Deployment
+## Scripts
 - Prepare Phase
   - `main.sh`
 - Test Phase
