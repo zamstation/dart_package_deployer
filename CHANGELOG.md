@@ -1,3 +1,7 @@
+# 0.2.0
+- Added `flutter test` to facilitate flutter package deployment.
+- Upgraded infrastructure using `dart_package_template - 0.5.0`.
+
 # 0.1.1
 - Modified `validate.sh` to fix `environment-sdk` regex.
 
