@@ -32,7 +32,14 @@ cd "$buildDirectory"
 #
 logStep "Running Tests"
 echo "Running dart test"
-dart test
+
+flutterOccurence=$(grep -c "sdk: flutter" "pubspec.yaml")
+if [[ $flutterOccurence -eq 0 ]]; then
+	dart test
+else
+	flutter test
+fi
+
 exitCode=$?
 if [[ exitCode -ne 0 ]]; then
 	throwAndExit "TEST_ERROR" "Error while running tests"
