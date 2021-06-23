@@ -28,3 +28,6 @@ This is a centralized repository that contain scripts for deploying dart package
     - Check for required files
   - `publish.sh`
     - pub publish
+
+## Contributors
+  * [Amsakanna](https://github.com/amsakanna)
