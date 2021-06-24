@@ -1,3 +1,6 @@
+# 0.3.0
+- Removed `flutter test` from `test.sh`.
+
 # 0.2.0
 - Added `flutter test` to facilitate flutter package deployment.
 - Upgraded infrastructure using `dart_package_template - 0.5.0`.
