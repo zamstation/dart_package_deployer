@@ -29,8 +29,10 @@ cd "$buildDirectory"
 # Getting Dependencies
 #
 logStep "Getting Dependencies"
+
 echo "Running dart pub get"
 dart pub get
+
 exitCode=$?
 if [[ exitCode -ne 0 ]]; then
         throwAndExit "DART_PUB_GET_ERROR" "Error while running dart pub get"

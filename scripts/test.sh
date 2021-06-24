@@ -31,14 +31,9 @@ cd "$buildDirectory"
 # Running Tests and Collecting Coverage
 #
 logStep "Running Tests"
-echo "Running dart test"
 
-flutterOccurence=$(grep -c "sdk: flutter" "pubspec.yaml")
-if [[ $flutterOccurence -eq 0 ]]; then
-	dart test
-else
-	flutter test
-fi
+echo "Running dart test"
+dart test
 
 exitCode=$?
 if [[ exitCode -ne 0 ]]; then
