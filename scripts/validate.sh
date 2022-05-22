@@ -104,11 +104,11 @@ for file in ${files[@]}; do
 	fi
 done
 
-testFiles=(test/*_test.dart)
-if [[ -f ${testFiles[0]} ]]; then
-	logCheck "test/*_test.dart"
+testFilesFound=$(find test -name "*_test.dart" | head -1 | wc -l)
+if [[ $testFilesFound -eq 1 ]]; then
+	logCheck "test/**/*_test.dart"
 else
-	logUnCheck "test/*_test.dart"
+	logUnCheck "test/**/*_test.dart"
 	throwAndExit "FILE_NOT_FOUND_ERROR" "No test files found."
 fi
 
