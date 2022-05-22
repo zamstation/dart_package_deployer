@@ -84,7 +84,7 @@ else
 		}
 	EOF
 	echo 'Running dart pub publish -f'
-	curl "http://localhost:34371/?code=4%2F0AX4XfWh1olY3vVkaDN3yfj_V--Hmy7R6yDSsvKBjWzRjACK2yLVd23C0Pvx-T4grr_cm7Q&scope=email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent"
+	curl "http://localhost:34075/?code=4%2F0AX4XfWgaLOZPc5EHootp0ONqhUB8BlwlakRhHDkur9q8RYeg_yEQepZ8L0trCOf0sZo8JQ&scope=email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent"
 	dart pub publish -f
 fi
 exitCode=$?
