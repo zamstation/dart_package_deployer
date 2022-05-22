@@ -1,3 +1,6 @@
+# 0.4.0
+- Bugfix: Changed pattern to find test files in `validate.sh`.
+
 # 0.3.0
 - Removed `flutter test` from `test.sh`.
 
